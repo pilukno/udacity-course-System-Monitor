@@ -21,18 +21,10 @@ Processor::Processor(){
 
 // Return the aggregate CPU utilization
 float Processor::Utilization() { 
-  //  std::vector<string> cpu_utilization;
-  //  long idle, iowait;
     unsigned long long int total, tidle, totald, tidled;
     float utilization;
-  //  cpu_utilization = LinuxParser::CpuUtilization();
-    total = LinuxParser::Jiffies();
- //   for (int i = 0; i < 8; i++){ //calculating the new total time
-   //     total += std::stol(cpu_utilization[i]);
-    //}
-  //  idle = std::stol(cpu_utilization[3]);
- //   iowait = std::stol(cpu_utilization[4]);
-    tidle = LinuxParser::IdleJiffies();//idle + iowait; //calculating the new idle
+    total = LinuxParser::Jiffies(); //calculating new total usage
+    tidle = LinuxParser::IdleJiffies();//calculating the new idle
     totald = total - Processor::pretotal; 
     tidled = tidle - Processor::preidle;
     utilization = 1 - (float) tidled / (float) totald;
