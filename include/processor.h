@@ -6,8 +6,8 @@ class Processor {
   Processor();
   float Utilization(); 
  private:
-  unsigned long long int preidle; // we define the previous idle utilization here
-  unsigned long long int pretotal; // we define the previous total utilization here
+  unsigned long long int preidle; // previous idle utilization here
+  unsigned long long int pretotal; // previous total utilization here
 };
 
 #endif
