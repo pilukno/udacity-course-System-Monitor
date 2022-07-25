@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 #include "process.h"
 #include "processor.h"
@@ -20,6 +21,7 @@ class System {
   std::string OperatingSystem() const;      
 
  private:
+  std::set<int> PIDS_;
   std::string kernel_;              
   std::string operatingSystem_;
   Processor cpu_;

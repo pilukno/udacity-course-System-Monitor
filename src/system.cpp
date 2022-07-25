@@ -22,6 +22,7 @@ System::System(){
     vector<int> process;
     process = LinuxParser::Pids();
     for(auto pid : process){
+        System::PIDS_.insert(pid);
         System::processes_.push_back(Process(pid));
     kernel_ = LinuxParser::Kernel();
     operatingSystem_ = LinuxParser::OperatingSystem();
@@ -31,6 +32,13 @@ System::System(){
 Processor& System::Cpu() { return cpu_; }
 
 vector<Process>& System::Processes() { 
+    vector<int> procs;
+    procs = LinuxParser::Pids();
+    for(auto pid : procs){ //check if there are new processes
+        if(PIDS_.find(pid) == PIDS_.end()){
+            processes_.push_back(Process(pid));
+        }
+    }
     sort(processes_.begin(), processes_.end());
     return processes_; 
 }
