@@ -36,6 +36,7 @@ vector<Process>& System::Processes() {
     procs = LinuxParser::Pids();
     for(auto pid : procs){ //check if there are new processes
         if(PIDS_.find(pid) == PIDS_.end()){
+            PIDS_.insert(pid);
             processes_.push_back(Process(pid));
         }
     }
